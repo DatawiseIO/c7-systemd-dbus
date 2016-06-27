@@ -8,7 +8,7 @@ This base-image allows you to -
 1. Run multiple systemd services within the container  
 2. Additionally, mount docker.sock (and /usr/bin/docker) inside this container to allow access to docker services from within the container  
 
-Normal use case for such a container is to allow an OS independent system-container that runs multiple systemd services as well as has the ability to spawn other dockr containers.  
+Normal use case for such a container is to allow an OS independent system-container that runs multiple systemd services as well as has the ability to spawn other docker containers.  
 
 To build this base-image:  
 ```
