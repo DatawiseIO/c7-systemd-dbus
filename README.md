@@ -16,7 +16,7 @@ Normal use case for such a container is to allow an OS independent system-contai
 To build this base-image:  
 ```
   git clone https://github.com/DatawiseIO/c7-systemd-dbus.git
-  cd 7-systemd-dbus
+  cd c7-systemd-dbus
   docker build --rm -t diamanti/c7-systemd-dbus:latest .
 ```
 
