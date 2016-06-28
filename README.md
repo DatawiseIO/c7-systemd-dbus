@@ -4,7 +4,7 @@ The Dockerfile and the dbus.service file in this repository can be used to gener
 
 If you want to use a pre-built docker image with this support, you can do:   
 ```
-  docker pull diamanti/c7-systemd-dbus
+  docker pull diamanti/c7-systemd-dbus:latest
 ```
 
 This base-image allows you to -   
@@ -15,12 +15,14 @@ Normal use case for such a container is to allow an OS independent system-contai
 
 To build this base-image:  
 ```
-  docker build --rm -t diamanti/c7-systemd-dbus:baseimg .
+  git clone https://github.com/DatawiseIO/c7-systemd-dbus.git
+  cd 7-systemd-dbus
+  docker build --rm -t diamanti/c7-systemd-dbus:latest .
 ```
 
 Run the docker image
 ```
-  docker run --name=c7 --privileged -d -v /usr/bin/docker:/usr/bin/docker -v /var/run/docker.sock:/run/docker.sock diamanti/c7-systemd-dbus:baseimg
+  docker run --name=c7 --privileged -d -v /usr/bin/docker:/usr/bin/docker -v /var/run/docker.sock:/run/docker.sock diamanti/c7-systemd-dbus:latest
 ```
 
 Test it out

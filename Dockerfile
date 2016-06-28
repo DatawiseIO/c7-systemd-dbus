@@ -15,6 +15,9 @@ rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
 rm -f /lib/systemd/system/basic.target.wants/*;\
 rm -f /lib/systemd/system/anaconda.target.wants/*;
 
+RUN mkdir -p /etc/selinux/targeted/contexts/
+RUN echo '<busconfig><selinux></selinux></busconfig>' > /etc/selinux/targeted/contexts/dbus_contexts
+
 ADD dbus.service /etc/systemd/system/dbus.service
 RUN systemctl enable dbus.service
 
