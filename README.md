@@ -16,3 +16,30 @@ Normal use case for such a container is to allow an OS independent system-contai
 To build this base-image:  
 ```
   docker build --rm -t diamanti/c7-systemd-dbus:baseimg .
+```
+
+Run the docker image
+```
+  docker run --name=c7 --privileged -d -v /usr/bin/docker:/usr/bin/docker -v /var/run/docker.sock:/run/docker.sock diamanti/c7-systemd-dbus:baseimg
+```
+
+Test it out
+```
+[guest@node-01]docker exec -ti c7 /bin/bash
+[root@9a541c77edc2 /]# systemctl status
+● 9a541c77edc2
+    State: running
+     Jobs: 0 queued
+   Failed: 0 units
+    Since: Tue 2016-06-28 01:06:26 UTC; 52s ago
+   CGroup: /system.slice/docker-9a541c77edc22e4039f30cb505902a5673278f62cabb9451bd00b47c4cc0db18.scope
+           ├─1 /usr/sbin/init
+           └─system.slice
+             └─systemd-journald.service
+               └─17 /usr/lib/systemd/systemd-journald
+               
+
+[root@9a541c77edc2 /]# docker ps
+CONTAINER ID        IMAGE                              COMMAND             CREATED              STATUS              PORTS               NAMES
+9a541c77edc2        diamanti/c7-systemd-dbus:baseimg   "/usr/sbin/init"    About a minute ago   Up 59 seconds                           c7
+```
